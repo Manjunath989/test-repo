@@ -1,11 +1,18 @@
+
 FROM node:22-alpine
 
 WORKDIR /app
 
-COPY package.json .
+ENV NODE_ENV=production
+ENV PORT=3000
 
-COPY app.js .
+COPY package.json ./
+COPY app.js ./
+COPY public ./public
 
 EXPOSE 3000
 
+USER node
+
 CMD ["npm", "start"]
+

@@ -1,0 +1,20 @@
+
+document.querySelectorAll('[data-copy]').forEach(button => {
+    button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copy);
+
+        if (!target) return;
+
+        try {
+            await navigator.clipboard.writeText(target.innerText);
+            button.textContent = 'Copied!';
+        } catch (error) {
+            button.textContent = 'Copy failed';
+        }
+
+        setTimeout(() => {
+            button.textContent = 'Copy YAML';
+        }, 2000);
+    });
+});
+

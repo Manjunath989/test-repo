@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Engineering documentation for GitHub Actions and CI/CD automation.">
+    <title>GitHub Actions | Engineering Docs</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-icon">G</div>
+        <span>Engineering<span class="brand-light"> Docs</span></span>
+    </div>
+
+    <nav class="top-nav">
+        <a href="#overview">Overview</a>
+        <a href="#workflow">Workflows</a>
+        <a href="#deployment">Deployment</a>
+        <a href="https://docs.github.com/en/actions" target="_blank" rel="noopener noreferrer">
+            GitHub Docs ↗
+        </a>
+    </nav>
+
+    <span class="status"><span class="status-dot"></span> Documentation</span>
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <p class="sidebar-heading">GETTING STARTED</p>
+        <a class="side-link active" href="#overview">Introduction</a>
+        <a class="side-link" href="#architecture">Architecture</a>
+
+        <p class="sidebar-heading">CORE CONCEPTS</p>
+        <a class="side-link" href="#workflow">Workflow Components</a>
+        <a class="side-link" href="#runners">GitHub Runners</a>
+        <a class="side-link" href="#secrets">Secrets & Variables</a>
+
+        <p class="sidebar-heading">IMPLEMENTATION</p>
+        <a class="side-link" href="#pipeline">CI/CD Pipeline</a>
+        <a class="side-link" href="#deployment">Docker Deployment</a>
+
+        <div class="sidebar-footer">
+            <span class="footer-indicator"></span>
+            Engineering Knowledge Base
+            <small>Version 1.0.0</small>
+        </div>
+    </aside>
+
+    <main class="content">
+
+        <div class="breadcrumb">
+            Documentation <span>/</span> DevOps <span>/</span> GitHub Actions
+        </div>
+
+        <section id="overview" class="hero">
+            <div class="eyebrow">DEVELOPER DOCUMENTATION</div>
+            <h1>Automate your software<br><span>delivery workflow.</span></h1>
+            <p>
+                Learn how GitHub Actions helps engineering teams automate
+                code integration, testing, Docker image builds, and deployments
+                through powerful CI/CD workflows.
+            </p>
+
+            <div class="hero-actions">
+                <a class="primary-btn" href="#workflow">Explore Workflows →</a>
+                <a class="secondary-btn" href="#pipeline">View CI/CD Pipeline</a>
+            </div>
+
+            <div class="hero-meta">
+                <span>● Continuous Integration</span>
+                <span>● Continuous Delivery</span>
+                <span>● Automation</span>
+            </div>
+        </section>
+
+        <section id="architecture" class="section">
+            <div class="section-label">01 / OVERVIEW</div>
+            <h2>What is GitHub Actions?</h2>
+            <p class="section-description">
+                GitHub Actions is a CI/CD automation platform integrated
+                directly into GitHub. It allows developers to execute automated
+                tasks whenever events occur in a repository.
+            </p>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <div class="card-icon purple">↻</div>
+                    <h3>Automated CI</h3>
+                    <p>Build and test application code whenever developers push changes.</p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon blue">⬆</div>
+                    <h3>Automated Delivery</h3>
+                    <p>Build container images and publish them to container registries.</p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-icon green">✓</div>
+                    <h3>Reliable Workflows</h3>
+                    <p>Standardize repetitive engineering tasks with reusable automation.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="workflow" class="section">
+            <div class="section-label">02 / CORE CONCEPTS</div>
+            <h2>Understanding a workflow</h2>
+            <p class="section-description">
+                A workflow is an automated process defined in a YAML file
+                inside the .github/workflows directory.
+            </p>
+
+            <div class="workflow-list">
+                <div class="workflow-item">
+                    <div class="step-number">01</div>
+                    <div><h3>Event</h3><p>Defines what triggers the workflow, such as push or pull_request.</p></div>
+                </div>
+                <div class="workflow-item">
+                    <div class="step-number">02</div>
+                    <div><h3>Workflow</h3><p>The complete automated process defined in a YAML file.</p></div>
+                </div>
+                <div class="workflow-item">
+                    <div class="step-number">03</div>
+                    <div><h3>Jobs</h3><p>Groups of tasks that execute on a runner. Jobs can depend on other jobs.</p></div>
+                </div>
+                <div class="workflow-item">
+                    <div class="step-number">04</div>
+                    <div><h3>Runner</h3><p>The machine that executes workflow jobs.</p></div>
+                </div>
+                <div class="workflow-item">
+                    <div class="step-number">05</div>
+                    <div><h3>Steps</h3><p>Individual commands or actions executed inside a job.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="runners" class="section">
+            <div class="section-label">03 / EXECUTION ENVIRONMENT</div>
+            <h2>GitHub Runners</h2>
+            <p class="section-description">
+                Runners provide the compute environment required to execute
+                workflow jobs.
+            </p>
+
+            <div class="comparison-grid">
+                <article class="comparison-card">
+                    <span class="tag purple-tag">MANAGED</span>
+                    <h3>GitHub-hosted Runner</h3>
+                    <p>Infrastructure managed by GitHub.</p>
+                    <ul>
+                        <li>No server maintenance</li>
+                        <li>Preconfigured environments</li>
+                        <li>Fresh runner for each job</li>
+                    </ul>
+                </article>
+
+                <article class="comparison-card">
+                    <span class="tag blue-tag">SELF-MANAGED</span>
+                    <h3>Self-hosted Runner</h3>
+                    <p>Infrastructure managed by your organization.</p>
+                    <ul>
+                        <li>Control over the environment</li>
+                        <li>Access to private infrastructure</li>
+                        <li>Custom hardware and software</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="secrets" class="section">
+            <div class="section-label">04 / SECURITY</div>
+            <h2>Secrets & Variables</h2>
+            <p class="section-description">
+                Store configuration and sensitive credentials securely instead
+                of hardcoding them into workflow files.
+            </p>
+
+            <div class="security-panel">
+                <div>
+                    <span class="security-icon">⌑</span>
+                    <h3>Repository Secrets</h3>
+                    <p>For sensitive values such as access tokens and passwords.</p>
+                </div>
+                <div>
+                    <span class="security-icon">⚙</span>
+                    <h3>Repository Variables</h3>
+                    <p>For non-sensitive configuration such as usernames and environment names.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pipeline" class="section">
+            <div class="section-label">05 / CI/CD IMPLEMENTATION</div>
+            <h2>How our pipeline works</h2>
+            <p class="section-description">
+                Our example automatically builds and publishes a Docker image
+                whenever code is pushed to the main branch.
+            </p>
+
+            <div class="pipeline">
+                <div class="pipeline-node">
+                    <span>01</span><strong>Developer</strong><small>Push code</small>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-node">
+                    <span>02</span><strong>GitHub</strong><small>Trigger event</small>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-node">
+                    <span>03</span><strong>Actions</strong><small>Run workflow</small>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-node">
+                    <span>04</span><strong>Docker</strong><small>Build image</small>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-node">
+                    <span>05</span><strong>Registry</strong><small>Push image</small>
+                </div>
+            </div>
+        </section>
+
+        <section id="deployment" class="section">
+            <div class="section-label">06 / DOCKER AUTOMATION</div>
+            <h2>Build and push Docker images</h2>
+            <p class="section-description">
+                GitHub Actions can automate Docker image creation and publishing
+                to Docker Hub or other container registries.
+            </p>
+
+            <div class="code-card">
+                <div class="code-header">
+                    <span>docker-build-push.yml</span>
+                    <button class="copy-btn" data-copy="workflow-code">Copy YAML</button>
+                </div>
+                <pre id="workflow-code"><code>name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Setup Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Build and Push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          push: true
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/github-actions-demo:latest</code></pre>
+            </div>
+
+            <div class="note">
+                <strong>Engineering note</strong>
+                <p>
+                    Credentials are stored in GitHub repository settings.
+                    Never commit access tokens or passwords to source control.
+                </p>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <div>
+                <strong>Engineering Docs</strong>
+                <p>Building, automating, and delivering software with confidence.</p>
+            </div>
+            <span>GitHub Actions Documentation · v1.0.0</span>
+        </footer>
+
+    </main>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>
+

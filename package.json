@@ -1,9 +1,14 @@
+
 {
   "name": "github-actions-demo",
   "version": "1.0.0",
-  "description": "GitHub Actions Docker Hub demo",
+  "description": "Enterprise-style GitHub Actions documentation portal",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
+
